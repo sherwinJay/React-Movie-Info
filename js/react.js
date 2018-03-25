@@ -13,11 +13,13 @@ class SearchBar extends React.Component{
 			);
 	}
 }
+
 class Movies extends React.Component{
 	render(){
 		return(
 				<div class="movieContainer">
-					<a href="#">{this.props.title}</a>
+					<p>{this.props.title}</p>
+					<p>{this.props.overview	}</p>
 				</div>
 			);
 	}
@@ -25,16 +27,29 @@ class Movies extends React.Component{
 
 class UpcomingMovies extends React.Component{
 	render(){
-		const upcomingMovieList = this.props.movieList.map((movies) => {
-			<li>
+		let resultLink = this.props.movieList;
+		const upcomingMovieList = resultLink.map((movies) => {
+			const backgroundImage = {
+				backgroundImage: `url(http://image.tmdb.org/t/p/w185/${movies.backdrop_path})`,
+				backgroundPosition: "center",
+				backgroundRepeat: "no-repeat",
+				width: "180px",
+				height: "180px"	
+			};
+			return(
+			<li className="movieList">
+				<a style={backgroundImage} >
 				<Movies 
-					title={movies.results.title}
-					overview={movies.results.overview} />
+					title={movies.title}
+					overview={movies.overview} />
+				</a>
 			</li>
+			);
 		});
 		return(
 				<div>
-					<ul>upcomingMovieList</ul>
+					<h2>Upcoming Movies</h2>
+					<ul className="cfix">{upcomingMovieList}</ul>
 				</div>
 			);
 	}
@@ -45,10 +60,9 @@ class MovieApp extends React.Component{
 		super(props);
 		this.state={
 			movieList: [],
-			showComments: false
 		}
 	}
-	componentWillMount(){
+	componentDidMount(){
 		this.ajaxCall();
 	}
 	render(){
@@ -56,7 +70,7 @@ class MovieApp extends React.Component{
 				<div>
           <h2 className="title">Movies</h2>
           <SearchBar />
-          <UpcomingMovies movieList={this.props.movieList} />
+          <UpcomingMovies movieList={this.state.movieList} />
           		</div>
           
 			);
@@ -68,14 +82,15 @@ class MovieApp extends React.Component{
 
 	}
 	//Not sure
-	ajaxCall(movieType){
+	ajaxCall(){
 		let movieLink = "https://api.themoviedb.org/3/movie/" 
 						+ "upcoming" + "?api_key=ff9d34ddaaebff2b1a6100d54346c1a7&language=en-US&page=1";
 		$.ajax({
 			method: 'GET',
 			url: movieLink,
 			success: (movieList) => {
-				this.setState({movieList});
+				console.log(movieList);
+				this.setState({movieList: movieList.results});
 			}
 		});
 	}
