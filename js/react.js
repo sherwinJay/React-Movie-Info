@@ -84,7 +84,7 @@ class MovieApp extends React.Component{
 	//Not sure
 	ajaxCall(){
 		let movieLink = "https://api.themoviedb.org/3/movie/" 
-						+ this.props.url + "?api_key=ff9d34ddaaebff2b1a6100d54346c1a7&language=en-US&page=1";
+						+ "upcoming" + "?api_key=ff9d34ddaaebff2b1a6100d54346c1a7&language=en-US&page=1";
 		/**$.ajax({
 			method: 'GET',
 			url: movieLink,
