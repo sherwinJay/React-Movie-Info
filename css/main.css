@@ -98,14 +98,14 @@ ul, ol{
 	background-color: rgba(255,255,255,0.1);
 	padding: 8px 12px;
 }
-.logo, .box{
+.logo, .movieList{
 	float: left;
 }
-.box{
-	width: 180px;
-	height: 180px;
+.movieList{
 	background-color: #111;
-	margin: 0 10px;
+	margin: 10px;
+	color: #fff;
+	overflow: hidden;
 }
 .searchBar{
 	float: right;
