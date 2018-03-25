@@ -27,7 +27,7 @@ class Movies extends React.Component{
 
 class UpcomingMovies extends React.Component{
 	render(){
-		let resultLink = this.props.movieList;
+		let resultLink = this.props.movieList.slice(0,5);
 		const upcomingMovieList = resultLink.map((movies) => {
 			const backgroundImage = {
 				backgroundImage: `url(http://image.tmdb.org/t/p/w185/${movies.backdrop_path})`,
@@ -70,7 +70,7 @@ class MovieApp extends React.Component{
 				<div>
           <h2 className="title">Movies</h2>
           <SearchBar />
-          <UpcomingMovies movieList={this.state.movieList} />
+          <UpcomingMovies movieList={this.state.movieList}  />
           		</div>
           
 			);
@@ -84,16 +84,23 @@ class MovieApp extends React.Component{
 	//Not sure
 	ajaxCall(){
 		let movieLink = "https://api.themoviedb.org/3/movie/" 
-						+ "upcoming" + "?api_key=ff9d34ddaaebff2b1a6100d54346c1a7&language=en-US&page=1";
-		$.ajax({
+						+ this.props.url + "?api_key=ff9d34ddaaebff2b1a6100d54346c1a7&language=en-US&page=1";
+		/**$.ajax({
 			method: 'GET',
 			url: movieLink,
 			success: (movieList) => {
 				console.log(movieList);
 				this.setState({movieList: movieList.results});
 			}
+		});**/
+
+		fetch(movieLink).
+		then((Response) => Response.json()).
+		then((findmovie) => {
+			this.setState({movieList: findmovie.results});
 		});
 	}
+
 }
 
 ReactDOM.render(<MovieApp  />, document.getElementById("main"));
