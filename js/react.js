@@ -17,9 +17,9 @@ class SearchBar extends React.Component{
 class Movies extends React.Component{
 	render(){
 		return(
-				<div class="movieContainer">
-					<p>{this.props.title}</p>
-					<p>{this.props.overview	}</p>
+				<div className="movieInfo">
+					<p className="boxTitle">{this.props.title}</p>
+					<p className="boxOverview">{this.props.overview	}</p>
 				</div>
 			);
 	}
@@ -47,7 +47,7 @@ constructor(props){
 			};
 			return(
 			<li className="movieList">
-				<a style={backgroundImage} >
+				<a href="#" className="moviesBox" style={backgroundImage} >
 				<Movies 
 					title={movies.title}
 					overview={movies.overview} />
@@ -111,9 +111,6 @@ class MovieApp extends React.Component{
 	getPopularMovie(){
 
 	}
-	//Not sure
-	
-
 }
 
 ReactDOM.render(<MovieApp  />, document.getElementById("main"));
