@@ -26,6 +26,15 @@ class Movies extends React.Component{
 }
 
 class UpcomingMovies extends React.Component{
+constructor(props){
+		super(props);
+		this.state={
+			movieList: [],
+		}
+	}
+  componentDidMount(){
+		this.ajaxCall();
+	}
 	render(){
 		let resultLink = this.props.movieList.slice(0,5);
 		const upcomingMovieList = resultLink.map((movies) => {
@@ -53,6 +62,26 @@ class UpcomingMovies extends React.Component{
 				</div>
 			);
 	}
+  
+  ajaxCall(){
+		let movieLink = "https://api.themoviedb.org/3/movie/" 
+						+ this.props.url + "?api_key=ff9d34ddaaebff2b1a6100d54346c1a7&language=en-US&page=1";
+		/**$.ajax({
+			method: 'GET',
+			url: movieLink,
+			success: (movieList) => {
+				console.log(movieList);
+				this.setState({movieList: movieList.results});
+			}
+		});**/
+
+		fetch(movieLink).
+		then((Response) => Response.json()).
+		then((findmovie) => {
+			this.setState({movieList: findmovie.results});
+		});
+	}
+  
 }
 
 class MovieApp extends React.Component{
@@ -61,9 +90,6 @@ class MovieApp extends React.Component{
 		this.state={
 			movieList: [],
 		}
-	}
-	componentDidMount(){
-		this.ajaxCall();
 	}
 	render(){
 		return(
@@ -82,24 +108,7 @@ class MovieApp extends React.Component{
 
 	}
 	//Not sure
-	ajaxCall(){
-		let movieLink = "https://api.themoviedb.org/3/movie/" 
-						+ this.props.url + "?api_key=ff9d34ddaaebff2b1a6100d54346c1a7&language=en-US&page=1";
-		/**$.ajax({
-			method: 'GET',
-			url: movieLink,
-			success: (movieList) => {
-				console.log(movieList);
-				this.setState({movieList: movieList.results});
-			}
-		});**/
-
-		fetch(movieLink).
-		then((Response) => Response.json()).
-		then((findmovie) => {
-			this.setState({movieList: findmovie.results});
-		});
-	}
+	
 
 }
 
