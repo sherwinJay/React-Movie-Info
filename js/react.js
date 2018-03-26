@@ -98,7 +98,9 @@ class MovieApp extends React.Component{
 	<h2>Upcoming</h2>
           <UpcomingMovies url="upcoming"  />
 	<h2>Popular</h2>
-	<UpcomingMovies url="popular"  />
+	<UpcomingMovies url="popular"  />		
+	<h2>Top Rated</h2>
+	<UpcomingMovies url="top_rated"  />
           		</div>
           
 			);
