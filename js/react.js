@@ -57,7 +57,6 @@ constructor(props){
 		});
 		return(
 				<div>
-					<h2>Upcoming Movies</h2>
 					<ul className="cfix">{upcomingMovieList}</ul>
 				</div>
 			);
@@ -96,7 +95,12 @@ class MovieApp extends React.Component{
 				<div>
           <h2 className="title">Movies</h2>
           <SearchBar />
+	<h2>Upcoming</h2>
           <UpcomingMovies url="upcoming"  />
+	<h2>Popular</h2>
+	<UpcomingMovies url="popular"  />
+	<h2>Top Rated</h2>
+	<UpcomingMovies url="popular"  />
           		</div>
           
 			);
