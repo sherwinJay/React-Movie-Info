@@ -29,14 +29,14 @@ class UpcomingMovies extends React.Component{
 constructor(props){
 		super(props);
 		this.state={
-			movieList: [],
+			movieList: []
 		}
 	}
   componentDidMount(){
 		this.ajaxCall();
 	}
 	render(){
-		let resultLink = this.props.movieList.slice(0,5);
+		let resultLink = this.state.movieList.slice(0,5);
 		const upcomingMovieList = resultLink.map((movies) => {
 			const backgroundImage = {
 				backgroundImage: `url(http://image.tmdb.org/t/p/w185/${movies.backdrop_path})`,
@@ -96,7 +96,7 @@ class MovieApp extends React.Component{
 				<div>
           <h2 className="title">Movies</h2>
           <SearchBar />
-          <UpcomingMovies movieList={this.state.movieList} url="upcoming"  />
+          <UpcomingMovies url="upcoming"  />
           		</div>
           
 			);
