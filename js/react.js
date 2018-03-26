@@ -111,6 +111,9 @@ class MovieApp extends React.Component{
 	getPopularMovie(){
 
 	}
+	//Not sure
+	
+
 }
 
 ReactDOM.render(<MovieApp  />, document.getElementById("main"));
