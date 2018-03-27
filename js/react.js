@@ -19,7 +19,7 @@ class Movies extends React.Component{
 		return(
 				<div className="movieInfo">
 					<p className="boxTitle">{this.props.title}</p>
-					<p className="boxOverview">{this.props.overview	}</p>
+					<p className="boxOverview">{this.props.overview.substr(0, 30)	}</p>
 				</div>
 			);
 	}
@@ -50,7 +50,7 @@ constructor(props){
 				<a href="#" className="moviesBox" style={backgroundImage} >
 				<Movies 
 					title={movies.title}
-					overview={movies.overview.substr(0, 30)} />
+					overview={movies.overview} />
 				</a>
 			</li>
 			);
