@@ -50,7 +50,7 @@ constructor(props){
 				<a href="#" className="moviesBox" style={backgroundImage} >
 				<Movies 
 					title={movies.title}
-					overview={movies.overview} />
+					overview={movies.overview.substr(0, 30)} />
 				</a>
 			</li>
 			);
