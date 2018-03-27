@@ -19,8 +19,10 @@ class Movies extends React.Component{
 		let bodyText = this.props.overview.substr(0, 90) + "...";
 		return(
 				<div className="movieInfo">
+					<div className="infoWrapper">
 					<p className="boxTitle">{this.props.title}</p>
 					<p className="boxOverview">{bodyText}</p>
+					</div>
 				</div>
 			);
 	}
