@@ -19,7 +19,7 @@ class Movies extends React.Component{
 		return(
 				<div className="movieInfo">
 					<p className="boxTitle">{this.props.title}</p>
-					<p className="boxOverview">{this.props.overview.substr(0, 30)	}</p>
+					<p className="boxOverview">{this.props.overview.substr(0, 90)	}</p>
 				</div>
 			);
 	}
