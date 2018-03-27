@@ -17,7 +17,7 @@ class SearchBar extends React.Component{
 class Movies extends React.Component{
 	render(){
 		let bodyText = this.props.overview.substr(0, 90);
-		bodyText = bodyText.substr(0, Math.min(bodyText.length, bodyText.lastIndexOf(" ")) + "...";
+		bodyText = bodyText.substr(0, Math.min(bodyText.length, bodyText.lastIndexOf(" "))) + "...";
 		
 		return(
 				<div className="movieInfo">
