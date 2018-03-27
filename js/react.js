@@ -16,10 +16,11 @@ class SearchBar extends React.Component{
 
 class Movies extends React.Component{
 	render(){
+		let bodyText = this.props.overview.substr(0, 90) + "...";
 		return(
 				<div className="movieInfo">
 					<p className="boxTitle">{this.props.title}</p>
-					<p className="boxOverview">{this.props.overview.substr(0, 90)	}</p>
+					<p className="boxOverview">{bodyText}</p>
 				</div>
 			);
 	}
