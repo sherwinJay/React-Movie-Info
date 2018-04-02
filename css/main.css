@@ -55,7 +55,7 @@ h1, h2, h3{
 	font-weight: bold;
 }
 h1, .logo h1 a{
-	color: #222;
+	color: #111;
 }
 h1{
 	font-size: 40px;
@@ -63,7 +63,7 @@ h1{
 }
 h2{
 	font-size: 30px;
-	color: #111;
+	color: #fff;
 	font-family: sans-serif;
 	line-height: 40px;
 }
@@ -88,9 +88,16 @@ body {
 ul, ol{
 	list-style: none;
 }
-
-.searchBar{
-	width: 330px;
+.mainHeader{
+	background-color: #fff;
+}
+.searchBox{
+	width: 350px;
+	float: right;
+	position: relative;
+}
+.searchBar{	
+	width: 100%;
 	border-top: 0;
 	border-right: 0;
 	border-bottom: 1px #222 solid;
@@ -98,17 +105,31 @@ ul, ol{
 	background-color: rgba(255,255,255,0.1);
 	padding: 8px 12px;
 }
-.logo, .movieList{
+
+.suggestBox{
+	width: 100%;
+    position: absolute;
+    background-color: #fff;
+    z-index: 99;
+    left: 0;
+    top: 35px;
+
+}
+.suggestedList{
+	padding: 8px 20px;
+	color: #222;
+}
+.suggestedList:hover{
+	background-color: #dedede;
+}
+.logo, .movieCategoryList{
 	float: left;
 }
-.movieList{
+.movieCategoryList{
 	background-color: #111;
 	margin: 10px;
 	color: #fff;
 	overflow: hidden;
-}
-.searchBar{
-	float: right;
 }
 .tc{
 	text-align: center;
@@ -123,11 +144,16 @@ ul, ol{
 	height: 100vh;
 	opacity: 0.65;
 }
-.header, .upComingMovies{
-	width: 1000px;
+.centerWrapper{
+	width: 1200px;
 	margin: 0 auto;
 	padding: 20px;
 }
+
+
+/***************************
+****************************
+***************************/
 #main{
 }
 .comment-name{
@@ -182,18 +208,18 @@ background-image: url("images/BabyDriver2.jpg");
 	display: block;
 	color: #fff;
 }
-.movieInfo{
+.movieBoxInfo{
 	position: absolute;
 	top: 100%;
 	left: 0;
 	transition: all 0.25s ease-in-out;
-	background-color: rgba(0,0,0,0.5);
+	background-color: rgba(0,0,0,0.65);
 	padding: 0 10px;
 	height: 100%;
 	display: flex;
     	align-items: center;
 }
-a.moviesBox:hover > .movieInfo{
+a.moviesBox:hover > .movieBoxInfo{
 	top: 0;
 }
 .boxTitle{
