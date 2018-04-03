@@ -1,9 +1,21 @@
 //SearchBar Child
 class Result extends React.Component{
+	constructor(props){
+		super(props);
+		this.state={
+			movieInfo: []
+		}
+	}
 	render(){
 		return(
-			<a href="#" className="suggestedList">{this.props.title}</a>
+			<a href="#" 
+			className="suggestedList"
+			onClick={this.alertClick.bind(this)}>
+					{this.props.title}</a>
 			);
+	}
+	alertClick(){
+			alert(this.props.passMovieList);
 	}
 }
 class SearchBar extends React.Component{
@@ -11,63 +23,76 @@ class SearchBar extends React.Component{
 		super(props);
 		this.state={
 			movies: '',
-			showSugesstion: false
+			showSuggestion: false
 		}
 		this.handleFilterChange = this.handleFilterChange.bind(this);
 		this.onFocus = this.onFocus.bind(this);
-		//this.onBlur = this.onBlur.bind(this);
+		this.onBlur = this.onBlur.bind(this);
+		this.setIgnoreBlur = this.setIgnoreBlur.bind(this);
+    	this.clearIgnoreBlur = this.clearIgnoreBlur.bind(this);
 	}
 	handleFilterChange(e){
     	this.props.onFilterChange(e.target.value);
     }
+
+    setIgnoreBlur() {
+    	this.ignoreBlur = true;
+ 	}
+  
+	clearIgnoreBlur() {
+	    this.ignoreBlur = false;
+	}
     onFocus(){
     	this.setState({
-    		showSugesstion: this.state.showSugesstion
+    		showSuggestion: true
     	});	
     } 
-    /**onBlur(){
+    onBlur(){
+    	if (this.ignoreBlur) return;
     	this.setState({
-    		showSugesstion: false
+    		showSuggestion: false
     	});	
-    }**/
+    }
 	render(){
-		const movieLists = this.props.searchMovie;
-		console.log(movieLists.length);
+		const movieLists = this.props.movieList;
+		//console.log(movieLists.length);
+		//console.log(movieLists);
 		const rows = [];
 		let displaySuggestion;
 		if(movieLists.length < 1){
 			displaySuggestion = {
 				display: 'none'
 			}
-		}else{
-			displaySuggestion = {
-				display: 'block'
-			}
 		}
-		this.props.movieList.slice(0,7).forEach((movie) => {
+		movieLists.slice(0,7).forEach((movie) => {
 				rows.push(
+					//return(
 						<li>
 							<Result title={movie.title} 
-									key={movie.title}
+									key={movie.id}
+									passMovieList={movie}
 							/>
 						</li>
+					//);
 					);
 			});
-		
 		return(
 			<div className="searchSeaction">
-				<form className="searchBox">
+				<form className="searchBox"
+						onBlur={this.onBlur} 
+						onMouseDown={this.setIgnoreBlur} 
+						onMouseUp={this.clearIgnoreBlur} 
+						onMouseOut={this.clearIgnoreBlur}>
 					<input className="searchBar"
 					type="text"
 					placeholder="Search Movie.." 
-					value={this.props.searchMovie} 
+					//value={this.props.searchMovie} 
 					onChange={this.handleFilterChange} 
 					onFocus={this.onFocus}
-					//onBur={this.onBlur}
 					/>
 					<span className="suggestBox" 
 							style={displaySuggestion}>
-						<ul>{rows}</ul>
+						<ul>{this.state.showSuggestion && rows}</ul>
 					</span>
 				</form>
 			</div>
@@ -161,7 +186,7 @@ class MovieApp extends React.Component{
 		this.fetchData();
 	}
 	render(){
-
+		console.log(this.state.query);
 		let movieLists = this.state.movieList;
 		console.log(movieLists);
 		return(
@@ -220,4 +245,4 @@ class MovieApp extends React.Component{
 	
 	}
 }
-ReactDOM.render(<MovieApp  />, document.getElementById("main"));
+ReactDOM.render(<MovieApp  />, document.getElementById("main"), console.timeEnd("app"));
