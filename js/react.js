@@ -14,8 +14,16 @@ class Result extends React.Component{
 					{this.props.title}</a>
 			);
 	}
-	alertClick(){
-			alert(this.props.passMovieList);
+	alertClick(e){
+			let title = this.props.passMovieList.title;
+			let body = this.props.passMovieList.overview;
+			let id = this.props.passMovieList.id;
+			let background = this.props.passMovieList.backdrop_path;
+			let poster = this.props.passMovieList.poster_path;
+			this.props.onSubmit(title, body, id, background, poster);
+			//console.log(this.props.passMovieList);
+			//document.getElementById("form").submit();
+			e.preventDefault();
 	}
 }
 class SearchBar extends React.Component{
@@ -30,6 +38,7 @@ class SearchBar extends React.Component{
 		this.onBlur = this.onBlur.bind(this);
 		this.setIgnoreBlur = this.setIgnoreBlur.bind(this);
     	this.clearIgnoreBlur = this.clearIgnoreBlur.bind(this);
+    	this.handleSubmit = this.handleSubmit.bind(this);
 	}
 	handleFilterChange(e){
     	this.props.onFilterChange(e.target.value);
@@ -53,7 +62,13 @@ class SearchBar extends React.Component{
     		showSuggestion: false
     	});	
     }
+    handleSubmit(e){
+    	alert("submit");
+    	e.preventDefault();
+
+    }
 	render(){
+		console.log(this.state.movies)
 		const movieLists = this.props.movieList;
 		//console.log(movieLists.length);
 		//console.log(movieLists);
@@ -64,25 +79,25 @@ class SearchBar extends React.Component{
 				display: 'none'
 			}
 		}
-		movieLists.slice(0,7).forEach((movie) => {
-				rows.push(
-					//return(
-						<li>
-							<Result title={movie.title} 
-									key={movie.id}
-									passMovieList={movie}
-							/>
-						</li>
-					//);
-					);
-			});
+		movieLists.slice(0,7).forEach((movie, index) => {
+			rows.push(
+					<li data-index={index}>
+						<Result title={movie.title} 
+								key={movie.id}
+								passMovieList={movie}
+								onSubmit={this.props.onSubmit}
+						/>
+					</li>
+				);
+		});
 		return(
 			<div className="searchSeaction">
-				<form className="searchBox"
-						onBlur={this.onBlur} 
+				<form className="searchBox" id="form"
+						onBlur={this.onBlur}
 						onMouseDown={this.setIgnoreBlur} 
 						onMouseUp={this.clearIgnoreBlur} 
-						onMouseOut={this.clearIgnoreBlur}>
+						onMouseOut={this.clearIgnoreBlur} 
+						>
 					<input className="searchBar"
 					type="text"
 					placeholder="Search Movie.." 
@@ -173,12 +188,60 @@ constructor(props){
   
 }
 
+/*******************************************
+*******************TESTING******************
+*******************************************/
+class ShowInfo extends React.Component{
+	render(){
+		return(
+			<div className='movieInfoWrapper cfix'>
+			<img className="moviePoster" src={`http://image.tmdb.org/t/p/w342/${this.props.poster}` } />
+			<div>
+				<h2>{this.props.title}</h2>
+				<p>{this.props.body}</p>
+			</div>
+			</div>
+		);
+	}
+}
+class MovieInfo extends React.Component{
+	render(){
+		const movieItems = this.props.movieList.map((movie) => {
+				const backgroundImage = {
+				backgroundImage: `url(http://image.tmdb.org/t/p/original/${movie.background})`,
+				backgroundSize: 'cover',
+				opacity: "0.5" 
+			};
+				return(
+			//put comment here
+			<div comment-list style={backgroundImage}>
+				<ShowInfo
+					title={movie.title}
+            		body={movie.body}
+            		poster={movie.poster}/>
+			</div>
+			);
+		});
+		return(
+			<div>
+				{movieItems}
+			</div>
+		);
+	}
+
+}
+/*******************************************
+********************************************
+*******************************************/
+
+
 class MovieApp extends React.Component{
 	constructor(props){
 		super(props);
 		this.state={
 			query: '',
-			movieList: []
+			movieList: [],
+			movieInformation: []
 		}
 		this.handleFilter = this.handleFilter.bind(this);
 	}
@@ -186,9 +249,10 @@ class MovieApp extends React.Component{
 		this.fetchData();
 	}
 	render(){
-		console.log(this.state.query);
+		//console.log(this.state.query);
 		let movieLists = this.state.movieList;
 		console.log(movieLists);
+		console.log(this.state.movieInformation);
 		return(
 			<div>
 				<header className="mainHeader">
@@ -198,6 +262,7 @@ class MovieApp extends React.Component{
 				          onFilterChange={this.handleFilter} 
 				          searchMovie={this.state.query}
 				          movieList={this.state.movieList}
+				          onSubmit={this.getMovie.bind(this)}
 				        />
 			        </div>
 		        </header>
@@ -209,9 +274,31 @@ class MovieApp extends React.Component{
 					<h2>Top Rated</h2>
 					<MovieCategory url="top_rated"  />
 				</div>
+				<MovieInfo movieList={this.state.movieInformation}  />
           	</div>
           
 			);
+	}
+
+	getMovie(title, body, id, background, poster){
+		const movie = {
+			title: title,
+			body: body,
+			id: id,
+			background: background,
+			poster: poster 
+		}
+		console.log(id);
+		if(this.state.movieInformation.length < 1){
+			this.setState((state) => ({
+				movieInformation: state.movieInformation.concat([movie])
+			}));
+		}else{
+			const updateMovieInformation = this.state.movieInformation.map((obj, index) => {
+				return obj.id === movie.id ? obj : movie;
+			});
+			this.setState({movieInformation: updateMovieInformation});
+		}		
 	}
 
 	fetchData(){
