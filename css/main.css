@@ -159,3 +159,83 @@ ul, ol{
 	float: left;
 	margin-right: 20px;	
 }
+
+/***************************
+****************************
+***************************/
+#main{
+}
+.comment-name{
+	font-weight: bold;
+}
+.commentForm{
+	padding: 10px 20px;
+	background-color: #9ecbd2;
+	margin: 15px 0;	
+}
+.comment{
+	padding: 15px 0;
+	border-bottom: 1px #dedede solid;
+}
+.confirmButtonsContainer a{
+	display: inline;
+	font-size: 	14px !important;
+	color: #555;
+}
+#one{
+	background-image: url("images/maxresdefault.jpg");
+}
+#two{
+background-image: url("images/dims.jpg");
+}
+#three{
+background-image: url("images/thelast-jedi-novelization-cover-tall-817x350.jpg");
+}
+#four{
+background-image: url("images/BabyDriver2.jpg");
+}
+#five{
+	background-image: url("images/images.jpg");
+}
+#one, #two, #three, #four, #five{
+	background-position: center;
+	background-repeat: no-repeat; 
+}
+.landingPageInfo{
+	width: 650px;
+	margin-top: 200px;
+	font-size: 16px;
+	color: #fff;
+}
+.landingPageInfo h2{
+	font-size: 48px;
+	color: #111;
+}
+.moviesBox{
+	position: relative;
+	overflow: hidden;
+	display: block;
+	color: #fff;
+}
+.movieBoxInfo{
+	position: absolute;
+	top: 100%;
+	left: 0;
+	transition: all 0.25s ease-in-out;
+	background-color: rgba(0,0,0,0.65);
+	padding: 0 10px;
+	height: 100%;
+	display: flex;
+    	align-items: center;
+}
+a.moviesBox:hover > .movieBoxInfo{
+	top: 0;
+}
+.boxTitle{
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+.boxOverview{
+	font-size: 12px;
+	line-height: 17px;
+}
