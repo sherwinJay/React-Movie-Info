@@ -95,6 +95,7 @@ export default class MovieInfo extends React.Component{
 		}
 	}
 	render(){
+		console.log(this.state.movieList);
 		const movieItems = this.state.movieList.map((movie) => {				
 			return(
 			//put comment here			
