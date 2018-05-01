@@ -10,7 +10,7 @@ class ShowInfo extends React.Component{
 			bgColor: ""
 		}
 	}
-	/**componentDidMount(){
+	componentDidMount(){
 		var image = new Image;
 		var img = document.getElementById('moviePoster');
 
@@ -19,7 +19,7 @@ class ShowInfo extends React.Component{
 		colorThief.getColor(img);
 
 		console.log(colorThief);
-	}**/
+	}
 	
 	render(){
 	/**	let sourceImage = document.getElementById("moviePoster")

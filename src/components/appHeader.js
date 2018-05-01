@@ -9,7 +9,7 @@ export default class AppHeader extends React.Component{
 		return(
 			<header className="mainHeader">
 				<div className="centerWrapper cfix">
-			        <Link to="/" ><h1 className="logo">MovieInfo</h1></Link>
+			        <Link to="/React-Movie-Info" ><h1 className="logo">MovieInfo</h1></Link>
 					<SearchBar />
 		        </div>
 		    </header>
