@@ -10,7 +10,6 @@ class ShowInfo extends React.Component{
 			bgColor: ""
 		}
 	}
-	
 	render(){
 		let formatRevenue = this.props.revenue.toLocaleString();
 		let listOfCast = this.props.cast.slice(0,5).map( (cast) => {
@@ -31,14 +30,14 @@ class ShowInfo extends React.Component{
 		});
 
 		const backgroundImage = {
-			backgroundImage: `url(http://image.tmdb.org/t/p/original/${this.props.background})`,
-			backgroundSize: 'cover'
+			backgroundImage: `url(https://image.tmdb.org/t/p/original/${this.props.background})`,
+			backgroundSize: 'cover',
 		};
 		return(
 		<div>
 			<div style={backgroundImage} colorify-main-color>
 				<div className='movieInfoWrapper cfix'>
-					<img colorify id="moviePoster" src={`http://image.tmdb.org/t/p/w342/${this.props.poster}` } />
+					<img colorify id="moviePoster" src={`https://image.tmdb.org/t/p/w342/${this.props.poster}` } />
 					<div className="columnLeft information">
 						<h2>{this.props.title}</h2>
 						<p className="tagline">{this.props.tagline}</p>
@@ -117,13 +116,11 @@ export default class MovieInfo extends React.Component{
 			);
 			
 		});
-		console.log(this.props);
 		return(
 			<div>
 				{movieItems}
 			</div>
 		);
-		
 	}
 	fetchURL(url){
 		const apiKey = "ff9d34ddaaebff2b1a6100d54346c1a7";
