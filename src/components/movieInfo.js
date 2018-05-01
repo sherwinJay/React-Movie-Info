@@ -10,25 +10,8 @@ class ShowInfo extends React.Component{
 			bgColor: ""
 		}
 	}
-	componentDidMount(){
-		var image = new Image;
-		var img = document.getElementById('moviePoster');
-		var imgWidth = img.width || img.naturalWidth;
-		var imgHeight = img.height || image.naturalHeight;
-		
-		var canvas = canvas.getContext('2d')
-                   .getImageData(0, 0, imgWidth, imgHeight);
-		var colorThief = new ColorThief();
-		colorThief.getColor(img);
-
-		console.log(colorThief);
-	}
 	
 	render(){
-	/**	let sourceImage = document.getElementById("moviePoster")
-		let colorThief = new ColorThief();
-		colorThief.getColor(sourceImage);
-		console.log(colorThief);**/
 		let formatRevenue = this.props.revenue.toLocaleString();
 		let listOfCast = this.props.cast.slice(0,5).map( (cast) => {
 			return(
