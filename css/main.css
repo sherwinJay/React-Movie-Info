@@ -81,12 +81,12 @@ body {
 	width: 100%;
 	height: 100%;
 	font-family: "PT Sans",'open_sansregular', Helvetica, sans-serif;
-	font-size:15px;
+	font-size:16px;
 	line-height:24px;
 	color: #111;
 }
 ul, ol{
-	list-style: none;
+	list-style: none !important;
 }
 .mainHeader{
 	background-color: #fff;
@@ -122,7 +122,7 @@ ul, ol{
 .suggestedList:hover{
 	background-color: #dedede;
 }
-.logo, .movieCategoryList{
+.logo, .movieCategoryList, .columnLeft, .cast li, .crew li{
 	float: left;
 }
 .movieCategoryList{
@@ -152,19 +152,24 @@ ul, ol{
 .movieInfoWrapper{
 	width: 1000px;
 	margin: 0 auto;
-	padding: 20px;
+	padding: 20px 0;
+	color: #fff;
 }
-.moviePoster{
-	width: 300px;
+#moviePoster{
+	width: 270px !important;
 	float: left;
 	margin-right: 20px;	
+	background-color: #ccc;
 }
 
 /***************************
 ****************************
 ***************************/
-#main{
+.information{
+	width: 650px;
 }
+
+
 .comment-name{
 	font-weight: bold;
 }
@@ -226,7 +231,7 @@ background-image: url("images/BabyDriver2.jpg");
 	padding: 0 10px;
 	height: 100%;
 	display: flex;
-    	align-items: center;
+    align-items: center;
 }
 a.moviesBox:hover > .movieBoxInfo{
 	top: 0;
@@ -239,3 +244,22 @@ a.moviesBox:hover > .movieBoxInfo{
 	font-size: 12px;
 	line-height: 17px;
 }
+.cast li{
+	width: 180px;
+	padding-right: 15px;
+}
+.crew li{
+	width: 160px;
+}
+.name{
+	font-weight: bold;
+}
+.movieInfoColumn{
+	width: 325px;
+}
+/**
+<span id="react-root"><section class="_sq4bv _oorvb _hggbb"><div class="  _psbeo"><div class="_ni05h "><section class="_s7gs2  _d9zua" style="width: 193.5px;"><header class="_7pkw3"><div class="_c949z"><a class="_7q3gb _pg23k _jpwof _gvoze" href="/ferllacanlale/" style="width: 32px; height: 32px;"><img class="_rewi8" src="https://instagram.fmnl4-1.fna.fbcdn.net/vp/73151d91a3a378f10378f4522022f5e0/5B6777BA/t51.2885-19/s150x150/30076301_2038287823052761_1703499048817786880_n.jpg"></a><a class="_2g7d5 notranslate _atnxg _a6e3j" title="ferllacanlale" href="/ferllacanlale/">ferllacanlale</a><time class="_7d0n7 _6g6t5" datetime="2018-04-10T17:28:56.000Z" title="Apr 11, 2018">13h</time><div class="_2tt3z"><button class="_sqixo"><div class="coreSpriteOptionsEllipsisLight"></div></button></div></div></header><div class="_mviq1 _ra71m"><div class="_rxwbc"><div class="_t2gra"></div><div class="_ay8ll _dubon" style="width: 90%;"></div></div><div class="_rxwbc"><div class="_t2gra"></div></div></div><div class="_2us5i" style="height: 344px;"><button class="_x6th4"><div class="coreSpriteLeftChevron"></div></button><div class="_te9am"><div class="_gwyj6 _4gv06"><div class="_jtktu" style="width: 194px; height: 344.889px;"><img class="_ntjhp _ro0gg  " decoding="sync" sizes="194px" srcset="https://instagram.fmnl4-1.fna.fbcdn.net/vp/d407edd7367dfc194c7d4108c7fe7884/5AD026C7/t51.12442-15/sh0.08/e35/p640x640/29736861_1791461677816641_5500765951169134592_n.jpg 640w,https://instagram.fmnl4-1.fna.fbcdn.net/vp/63646a3c5efb91274c8549e43a6466a8/5AD01E83/t51.12442-15/sh0.08/e35/p750x750/29736861_1791461677816641_5500765951169134592_n.jpg 750w,https://instagram.fmnl4-1.fna.fbcdn.net/vp/826a123fa142afb0efbbfaada9eec1f0/5AD0163C/t51.12442-15/e35/29736861_1791461677816641_5500765951169134592_n.jpg 1080w" src="https://instagram.fmnl4-1.fna.fbcdn.net/vp/826a123fa142afb0efbbfaada9eec1f0/5AD0163C/t51.12442-15/e35/29736861_1791461677816641_5500765951169134592_n.jpg"><div class="_o95x1"><div class="_v88d1"></div><div class="_npx7y "></div></div></div><div class="_4c5eh"><iframe aria-hidden="true" class="_o6ctz" tabindex="-1"></iframe></div></div></div><div class="_m72dt"></div><button class="_j1od1"><div class="coreSpriteRightChevron"></div></button><button class="_t848o"><div class="coreSpriteCloseLight"><span class="_8scx2">Close</span></div></button><div class="_nfei5"></div></div></section></div></div></section></span>
+
+
+<section class="_sq4bv _oorvb _hggbb"><div class="  _psbeo"><div class="_ni05h "><section class="_s7gs2  _d9zua" style="width: 144.563px;"><header class="_7pkw3"><div class="_c949z"><a class="_7q3gb _pg23k _jpwof _gvoze" href="/ferllacanlale/" style="width: 32px; height: 32px;"><img class="_rewi8" src="https://instagram.fmnl4-1.fna.fbcdn.net/vp/73151d91a3a378f10378f4522022f5e0/5B6777BA/t51.2885-19/s150x150/30076301_2038287823052761_1703499048817786880_n.jpg"></a><a class="_2g7d5 notranslate _atnxg _a6e3j" title="ferllacanlale" href="/ferllacanlale/">ferllacanlale</a><time class="_7d0n7 _6g6t5" datetime="2018-04-10T17:33:41.000Z" title="Apr 11, 2018">13h</time><div class="_2tt3z"><button class="_sqixo"><div class="coreSpriteOptionsEllipsisLight"></div></button></div></div></header><div class="_mviq1 _ra71m"><div class="_rxwbc"><div class="_t2gra"></div><div class="_ay8ll " style="width: 100%;"></div></div><div class="_rxwbc"><div class="_t2gra"></div><div class="_ay8ll _dubon" style="width: 14%;"></div></div></div><div class="_2us5i" style="height: 257px;"><button class="_x6th4"><div class="coreSpriteLeftChevron"></div></button><div class="_te9am"><div class="_gwyj6 _4gv06"><div class="_jtktu" style="width: 145px; height: 257.778px;"><img class="_ntjhp _ro0gg  " decoding="sync" sizes="145px" srcset="https://instagram.fmnl4-1.fna.fbcdn.net/vp/bf094e9793cbe89af04e1938e39a83c1/5AD01852/t51.12442-15/sh0.08/e35/p640x640/29716855_212346612872230_7477925580055248896_n.jpg 640w,https://instagram.fmnl4-1.fna.fbcdn.net/vp/ce3e89134a1fba7d2ee8486795bfe71c/5AD03852/t51.12442-15/sh0.08/e35/p750x750/29716855_212346612872230_7477925580055248896_n.jpg 750w,https://instagram.fmnl4-1.fna.fbcdn.net/vp/e275fd12ac1cf2686fdf9055eccfaefa/5AD071F5/t51.12442-15/e35/29716855_212346612872230_7477925580055248896_n.jpg 1080w" src="https://instagram.fmnl4-1.fna.fbcdn.net/vp/e275fd12ac1cf2686fdf9055eccfaefa/5AD071F5/t51.12442-15/e35/29716855_212346612872230_7477925580055248896_n.jpg"><div class="_o95x1"><div class="_v88d1"></div><div class="_npx7y "></div></div></div><div class="_4c5eh"><iframe aria-hidden="true" class="_o6ctz" tabindex="-1"></iframe></div></div></div><div class="_m72dt"></div><button class="_j1od1"><div class="coreSpriteRightChevron"></div></button><button class="_t848o"><div class="coreSpriteCloseLight"><span class="_8scx2">Close</span></div></button><div class="_nfei5"></div></div></section></div></div></section>
+**/
