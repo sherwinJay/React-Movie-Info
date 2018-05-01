@@ -16,7 +16,7 @@ class MovieApp extends React.Component{
 				<div>
 					<AppHeader/>	
 					<Switch>	
-						<Route exact path="/" component={HomePage} />
+						<Route exact path="/React-Movie-Info" component={HomePage} />
 						<Route path="/movie/:movieId" component={MovieInfo} />	
 					</Switch>
 				</div>
