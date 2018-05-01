@@ -13,7 +13,11 @@ class ShowInfo extends React.Component{
 	componentDidMount(){
 		var image = new Image;
 		var img = document.getElementById('moviePoster');
-
+		var imgWidth = img.width || img.naturalWidth;
+		var imgHeight = img.height || img.naturalHeight;
+		
+		var canvas = canvas.getContext('2d')
+                   .getImageData(0, 0, imgWidth, imgHeight);
 		image.crossOrigin = "anonymous"
 		var colorThief = new ColorThief();
 		colorThief.getColor(img);
