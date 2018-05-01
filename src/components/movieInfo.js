@@ -15,7 +15,7 @@ class ShowInfo extends React.Component{
 		let listOfCast = this.props.cast.slice(0,5).map( (cast) => {
 			return(
 				<li>	
-					<img src={`https://image.tmdb.org/t/p/w342/${this.props.castImage}`} />
+					<img src={`https://image.tmdb.org/t/p/w154/${this.props.castImage}`} />
 					<p className="name">{cast.name}</p>
 					<p>{cast.character}</p>
 				</li>
