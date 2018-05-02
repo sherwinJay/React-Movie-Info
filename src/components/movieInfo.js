@@ -15,7 +15,7 @@ class ShowInfo extends React.Component{
 		let listOfCast = this.props.cast.slice(0,5).map( (cast) => {
 			return(
 				<li>	
-					<img src={`https://image.tmdb.org/t/p/w154/${this.props.castImage}`} />
+					<img src={`https://image.tmdb.org/t/p/w154/${cast.profile_path}`} />
 					<p className="name">{cast.name}</p>
 					<p>{cast.character}</p>
 				</li>
@@ -33,6 +33,7 @@ class ShowInfo extends React.Component{
 		const backgroundImage = {
 			backgroundImage: `url(https://image.tmdb.org/t/p/original/${this.props.background})`,
 			backgroundSize: 'cover',
+			height: "100%"
 		};
 		return(
 		<div>
@@ -45,12 +46,23 @@ class ShowInfo extends React.Component{
 						<p>{this.props.body}</p>
 						<div className="moreInfo cfix">
 							<div className="columnLeft movieInfoColumn">
+								<div >
 								<p>Rating: {this.props.rating}</p>
-								<p>${formatRevenue}</p>
+								</div>
+								<div>
+									<img src="../../css/images/dollar2.png"/>	
+									<p>${formatRevenue}</p>
+								</div>
 							</div>
 							<div className="columnLeft movieInfoColumn">
+								<div>
+								<img src="../../css/images/clock2.png"/>
 								<p>Runtime: {this.props.runtime}mins</p>
+								</div>
+								<div>
+								<img src="../../css/images/calendar2.png"/>
 								<p>Release Date: {this.props.releaseDate}</p>
+								</div>
 							</div>
 						</div>
 						<div>
@@ -113,7 +125,6 @@ export default class MovieInfo extends React.Component{
 						crew={movie.credits.crew}
 						tagline={movie.tagline}
 						background={movie.backdrop_path}
-						castImage={movie.profile_path}
 						/>
 				</div>
 			);
