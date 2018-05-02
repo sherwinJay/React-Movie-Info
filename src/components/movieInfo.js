@@ -50,18 +50,15 @@ class ShowInfo extends React.Component{
 									<p>Rating: {this.props.rating}</p>
 								</div>
 								<div className="info">
-									<img src="../../images/dollar.png" title="Revenue"/>	
 									<p>${formatRevenue}</p>
 								</div>
 							</div>
 							<div className="columnLeft movieInfoColumn">
 								<div className="info">
-									<img src="../../images/clock.png" title="Runtime"/>
-									<p>{this.props.runtime}mins</p>
+									<p>Runtime: {this.props.runtime}mins</p>
 								</div>
 								<div className="info">
-									<img src="../../images/calendar.png" title="Release Date"/>
-									<p>{this.props.releaseDate}</p>
+									<p>Release Date: {this.props.releaseDate}</p>
 								</div>
 							</div>
 						</div>
