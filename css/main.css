@@ -168,8 +168,6 @@ ul, ol{
 .information{
 	width: 650px;
 }
-
-
 .comment-name{
 	font-weight: bold;
 }
@@ -253,6 +251,16 @@ a.moviesBox:hover > .movieBoxInfo{
 }
 .name{
 	font-weight: bold;
+}
+.moreInfo .info{
+	display: flex;
+	margin: 15px 0;
+}
+.moreInfo img{
+	margin-right: 4px;
+}
+.moreInfo img, .moreInfo p{
+display: inline-block;
 }
 .movieInfoColumn{
 	width: 325px;

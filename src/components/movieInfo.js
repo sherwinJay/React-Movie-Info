@@ -46,22 +46,22 @@ class ShowInfo extends React.Component{
 						<p>{this.props.body}</p>
 						<div className="moreInfo cfix">
 							<div className="columnLeft movieInfoColumn">
-								<div >
-								<p>Rating: {this.props.rating}</p>
+							<div className="info">
+									<p>Rating: {this.props.rating}</p>
 								</div>
-								<div>
-									<img src="../../css/images/dollar2.png"/>	
+								<div className="info">
+									<img src="../../css/images/dollar.png" title="Revenue"/>	
 									<p>${formatRevenue}</p>
 								</div>
 							</div>
 							<div className="columnLeft movieInfoColumn">
-								<div>
-								<img src="../../css/images/clock2.png"/>
-								<p>Runtime: {this.props.runtime}mins</p>
+								<div className="info">
+									<img src="../../css/images/clock.png" title="Runtime"/>
+									<p>{this.props.runtime}mins</p>
 								</div>
-								<div>
-								<img src="../../css/images/calendar2.png"/>
-								<p>Release Date: {this.props.releaseDate}</p>
+								<div className="info">
+									<img src="../../css/images/calendar.png" title="Release Date"/>
+									<p>{this.props.releaseDate}</p>
 								</div>
 							</div>
 						</div>
