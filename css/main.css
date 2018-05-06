@@ -278,3 +278,7 @@ display: inline-block;
 	padding-left: 35px;
 	height: 25px;
 }
+.tagline{
+	font-weight: bold;
+	margin-top:15px;
+}
