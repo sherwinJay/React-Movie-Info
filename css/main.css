@@ -265,3 +265,16 @@ display: inline-block;
 .movieInfoColumn{
 	width: 325px;
 }
+.clock{
+	background: url("images/clock.png") no-repeat;
+}
+.calendar{
+	background: url("/public/images/calendar.png") no-repeat;
+}
+.revenue{
+	background: url("/public/images/dollar.png") no-repeat;
+}
+.clock, .calendar, .revenue{
+	padding-left: 35px;
+	height: 25px;
+}
