@@ -10,7 +10,31 @@ class ShowInfo extends React.Component{
 			bgColor: ""
 		}
 	}
+	componentDidMount(){
+		var img = document.createElement('img');
+		//img.src= `https://image.tmdb.org/t/p/w342/${this.props.poster}`;
+		//img.setAttribute('crossOrigin', "");
+		img.setAttribute('src', `https://image.tmdb.org/t/p/w342/${this.props.poster}`);
+	//	img.crossOrigin = "Anonymous";
+		img.addEventListener('load', function() {
+			var vibrant = new Vibrant(img);
+			var swatches = vibrant.swatches()
+			for (var swatch in swatches)
+				if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+					console.log(swatch, swatches[swatch].getHex())
+		
+			/*
+			 * Results into:
+			 * Vibrant #7a4426
+			 * Muted #7b9eae
+			 * DarkVibrant #348945
+			 * DarkMuted #141414
+			 * LightVibrant #f3ccb4
+			 */
+		});
+	}
 	render(){
+		
 		let formatRevenue = this.props.revenue.toLocaleString();
 		let listOfCast = this.props.cast.slice(0,5).map( (cast) => {
 			return(

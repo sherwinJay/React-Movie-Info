@@ -266,7 +266,7 @@ display: inline-block;
 	width: 325px;
 }
 .clock{
-	background: url("/public/images/clock.png") no-repeat;
+	background: url("images/clock.png") no-repeat;
 }
 .calendar{
 	background: url("/public/images/calendar.png") no-repeat;
@@ -277,4 +277,8 @@ display: inline-block;
 .clock, .calendar, .revenue{
 	padding-left: 35px;
 	height: 25px;
+}
+.tagline{
+	font-weight: bold;
+	margin-top: 15px;
 }
