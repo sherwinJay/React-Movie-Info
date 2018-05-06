@@ -266,13 +266,13 @@ display: inline-block;
 	width: 325px;
 }
 .clock{
-	background: url("images/clock.png") no-repeat;
+	background: url("/public/images/clock.png") no-repeat;
 }
 .calendar{
-	background: url("images/calendar.png") no-repeat;
+	background: url("/public/images/calendar.png") no-repeat;
 }
 .revenue{
-	background: url("images/dollar.png") no-repeat;
+	background: url("/public/images/dollar.png") no-repeat;
 }
 .clock, .calendar, .revenue{
 	padding-left: 35px;
