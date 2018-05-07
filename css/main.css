@@ -92,12 +92,11 @@ ul, ol{
 	background-color: #fff;
 }
 .searchBox{
-	width: 350px;
 	float: right;
 	position: relative;
 }
 .searchBar{	
-	width: 100%;
+	width: 350px;
 	border-top: 0;
 	border-right: 0;
 	border-bottom: 1px #222 solid;
@@ -148,6 +147,7 @@ ul, ol{
 	width: 1200px;
 	margin: 0 auto;
 	padding: 20px;
+	color: #fff;
 }
 .movieInfoWrapper{
 	width: 1000px;
@@ -242,14 +242,10 @@ a.moviesBox:hover > .movieBoxInfo{
 	font-size: 12px;
 	line-height: 17px;
 }
-.cast li{
-	width: 180px;
-	padding-right: 15px;
-}
 .crew li{
 	width: 160px;
 }
-.name{
+.actor{
 	font-weight: bold;
 }
 .moreInfo .info{
@@ -269,10 +265,10 @@ display: inline-block;
 	background: url("images/clock.png") no-repeat;
 }
 .calendar{
-	background: url("images/calendar.png") no-repeat;
+	background: url("/public/images/calendar.png") no-repeat;
 }
 .revenue{
-	background: url("images/dollar.png") no-repeat;
+	background: url("/public/images/dollar.png") no-repeat;
 }
 .clock, .calendar, .revenue{
 	padding-left: 35px;
@@ -280,5 +276,33 @@ display: inline-block;
 }
 .tagline{
 	font-weight: bold;
-	margin-top:15px;
+	margin-top: 15px;
+}
+.darkenBG{
+	background-color: rgba(22,22,22,0.8);
+}
+.cast li{
+	max-width:135px;
+	width:135px;
+	overflow: hidden;
+	padding-right: 15px;
+	height: 310px;
+}
+.cast li img{
+	width:131px;
+	min-height: 195px;
+}
+.noImage{
+	background-color: #ccc;
+	min-height: 195px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+.actor, .character{
+	font-size: 14px;
+    line-height: 18px;
 }
