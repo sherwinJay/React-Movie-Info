@@ -10,7 +10,7 @@ class ShowInfo extends React.Component{
 			bgColor: ""
 		}
 	}
-	componentDidMount(){
+	/**componentDidMount(){
 		var img = document.createElement('img');
 		//img.src= `https://image.tmdb.org/t/p/w342/${this.props.poster}`;
 		//img.setAttribute('crossOrigin', "");
@@ -22,26 +22,23 @@ class ShowInfo extends React.Component{
 			for (var swatch in swatches)
 				if (swatches.hasOwnProperty(swatch) && swatches[swatch])
 					console.log(swatch, swatches[swatch].getHex())
-		
-			/*
-			 * Results into:
-			 * Vibrant #7a4426
-			 * Muted #7b9eae
-			 * DarkVibrant #348945
-			 * DarkMuted #141414
-			 * LightVibrant #f3ccb4
-			 */
 		});
-	}
+	}**/
 	render(){
 		
 		let formatRevenue = this.props.revenue.toLocaleString();
-		let listOfCast = this.props.cast.slice(0,5).map( (cast) => {
+		let listOfCast = this.props.cast.slice(0,6).map( (cast) => {
+			let castImage;
+			if(cast.profile_path === null){
+				castImage = <div className="noImage"><p>No Image</p></div>
+			}else{
+				castImage = <img src={`https://image.tmdb.org/t/p/w154/${cast.profile_path}`} />
+			}
 			return(
-				<li>	
-					<img src={`https://image.tmdb.org/t/p/w154/${cast.profile_path}`} />
-					<p className="name">{cast.name}</p>
-					<p>{cast.character}</p>
+				<li>
+					{castImage}	
+					<p className="actor">{cast.name}</p>
+					<p className="character">{cast.character}</p>
 				</li>
 			);
 		});
@@ -62,6 +59,7 @@ class ShowInfo extends React.Component{
 		return(
 		<div>
 			<div style={backgroundImage} colorify-main-color>
+			<div className="darkenBG">
 				<div className='movieInfoWrapper cfix'>
 					<img colorify id="moviePoster" src={`https://image.tmdb.org/t/p/w342/${this.props.poster}` } />
 					<div className="columnLeft information">
@@ -96,6 +94,7 @@ class ShowInfo extends React.Component{
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 			<div className="movieInfoWrapper">
 			<h3>Starring</h3>
