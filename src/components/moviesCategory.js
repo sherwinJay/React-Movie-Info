@@ -35,7 +35,7 @@ constructor(props){
 		let resultLink = this.state.movieList.slice(0,5);
 		const upcomingMovieList = resultLink.map((movies) => {
 			const backgroundImage = {
-				backgroundImage: `url(http://image.tmdb.org/t/p/w300/${movies.backdrop_path})`,
+				backgroundImage: `url(https://image.tmdb.org/t/p/w300/${movies.backdrop_path})`,
 				backgroundPosition: "center",
 				backgroundRepeat: "no-repeat",
 				width: "220px",
