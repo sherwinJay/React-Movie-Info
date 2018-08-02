@@ -121,7 +121,7 @@ ul, ol{
 .suggestedList:hover{
 	background-color: #dedede;
 }
-.logo, .movieCategoryList, .columnLeft, .cast li, .crew li{
+.logo, .movieCategoryList, .columnLeft, .cast li, .crew li, .trailers li{
 	float: left;
 }
 .movieCategoryList{
@@ -305,4 +305,7 @@ display: inline-block;
 .actor, .character{
 	font-size: 14px;
     line-height: 18px;
+}
+.trailers li{
+	margin: 0 5px;
 }

@@ -15,8 +15,5 @@ export default class AppHeader extends React.Component{
 		    </header>
 		);
 	}
-	myCallback(dataFromChild){
-    	this.props.onFilterChange(dataFromChild);
-	}
 }
 

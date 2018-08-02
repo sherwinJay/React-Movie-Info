@@ -1,39 +1,23 @@
 import React from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 window.jQuery = $;
 window.$ = $;
 
 class ShowInfo extends React.Component{
-	constructor(props){
-		super(props);
-		this.state={
-			bgColor: ""
-		}
-	}
-	/**componentDidMount(){
-		var img = document.createElement('img');
-		//img.src= `https://image.tmdb.org/t/p/w342/${this.props.poster}`;
-		//img.setAttribute('crossOrigin', "");
-		img.setAttribute('src', `https://image.tmdb.org/t/p/w342/${this.props.poster}`);
-	//	img.crossOrigin = "Anonymous";
-		img.addEventListener('load', function() {
-			var vibrant = new Vibrant(img);
-			var swatches = vibrant.swatches()
-			for (var swatch in swatches)
-				if (swatches.hasOwnProperty(swatch) && swatches[swatch])
-					console.log(swatch, swatches[swatch].getHex())
-		});
-	}**/
-	render(){
-		
+	
+	render(){	
 		let formatRevenue = this.props.revenue.toLocaleString();
 		let listOfCast = this.props.cast.slice(0,6).map( (cast) => {
+
 			let castImage;
+
 			if(cast.profile_path === null){
 				castImage = <div className="noImage"><p>No Image</p></div>
 			}else{
 				castImage = <img src={`https://image.tmdb.org/t/p/w154/${cast.profile_path}`} />
 			}
+
 			return(
 				<li>
 					{castImage}	
@@ -42,6 +26,7 @@ class ShowInfo extends React.Component{
 				</li>
 			);
 		});
+
 		let listOfCrew = this.props.crew.slice(0,4).map( (crew) => {
 			return(
 				<li>
@@ -51,12 +36,22 @@ class ShowInfo extends React.Component{
 			);
 		});
 
+		let movieTrailer = this.props.video.slice(0,2).map( (trailer) =>  {
+			return(
+				<li>
+					<iframe width="445" height="250" src={`https://www.youtube.com/embed/${trailer.key}`} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</li>
+			);
+		});
+
 		const backgroundImage = {
 			backgroundImage: `url(https://image.tmdb.org/t/p/original/${this.props.background})`,
 			backgroundSize: 'cover',
 			height: "100%"
 		};
+
 		return(
+			
 		<div>
 			<div style={backgroundImage} colorify-main-color>
 			<div className="darkenBG">
@@ -97,12 +92,18 @@ class ShowInfo extends React.Component{
 			</div>
 			</div>
 			<div className="movieInfoWrapper">
-			<h3>Starring</h3>
-			<ul className="cast">
-				<div className="cfix">
-					{listOfCast}
-				</div>
-			</ul>
+				<h3>Starring</h3>
+				<ul className="cast">
+					<div className="cfix">
+						{listOfCast}
+					</div>
+				</ul>
+				<h3>Trailers</h3>
+				<ul className="trailers">
+					<div className="cfix">
+						{movieTrailer}
+					</div>
+				</ul>
 			</div>
 		</div>
 		);
@@ -145,6 +146,7 @@ export default class MovieInfo extends React.Component{
 						crew={movie.credits.crew}
 						tagline={movie.tagline}
 						background={movie.backdrop_path}
+						video={movie.videos.results}
 						/>
 				</div>
 			);
@@ -162,7 +164,7 @@ export default class MovieInfo extends React.Component{
 							${url}?api_key=${apiKey}
 							&append_to_response=credits,videos`;
 		console.log(newMovieLink);
-		$.ajax({
+		/**$.ajax({
 			method: 'GET',
 			url: newMovieLink,
 			dataType: "jsonp",
@@ -170,8 +172,17 @@ export default class MovieInfo extends React.Component{
 				//create new movie link here
 				this.setState({movieList: [movieList]});
 			}
+		});**/
+		axios({
+			method: 'GET',
+			url: newMovieLink
+		}).then( (movieList) => {
+			//create new movie link here
+			const data = movieList;
+			this.setState({movieList: [data.data]});
+		}).catch(function(error){
+			console.log(error)
 		});
-		
 	}
 
 }

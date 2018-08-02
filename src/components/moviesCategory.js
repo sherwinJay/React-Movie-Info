@@ -1,7 +1,11 @@
 import React from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 window.jQuery = $;
 window.$ = $;
+import {
+	Link
+  } from 'react-router-dom';	
 
 class Movies extends React.Component{
 	render(){
@@ -27,8 +31,8 @@ constructor(props){
 			movieList: []
 		}
 	}
-  	componentWillMount(){
-		this.ajaxCall();
+  	componentDidMount(){
+		this.fetchMovie();
 	}
 	render(){
 		console.log(this.props.movieList);
@@ -43,12 +47,13 @@ constructor(props){
 			};
 			return(
 			<li className="movieCategoryList">
-				<a href="#" className="moviesBox" style={backgroundImage} >
-					<Movies 
+				
+				<Link to={`/movie/${movies.id}`} className="moviesBox" style={backgroundImage}><Movies 
 					title={movies.title}
 					overview={movies.overview}
 					rating={movies.vote_average} />
-				</a>
+				</Link>
+				
 			</li>
 			);
 		});
@@ -59,17 +64,24 @@ constructor(props){
 			);
 	}
   
-  ajaxCall(){
-  		const categoryLink = this.props.url; 
+  	fetchMovie(){
+  		const categoryName = this.props.url; 
   		const apiKey = "ff9d34ddaaebff2b1a6100d54346c1a7";
 		let movieLink = "https://api.themoviedb.org/3/movie/" 
-						+ categoryLink + "?api_key=" + apiKey + "&language=en-US&page=1";
+						+ categoryName + "?api_key=" + apiKey + "&language=en-US&page=1";
 		
-		fetch(movieLink).
+		/**fetch(movieLink).
 		then((Response) => Response.json()).
 		then((findmovie) => {
 			this.setState({movieList: findmovie.results});
+		});**/
+		axios({
+			method: 'GET',
+			url: movieLink
+		}).then( (findmovie) => {
+			this.setState({movieList: findmovie.data.results});
+		}).catch(function(error){
+			console.log(error);
 		});
 	}
-  
 }

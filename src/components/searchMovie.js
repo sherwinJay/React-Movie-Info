@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import axios from 'axios';
 window.jQuery = $;
 window.$ = $;
 import {
@@ -24,6 +25,40 @@ export default class SearchBar extends React.Component{
 	componentDidMount(){
 		this.fetchMovie();
 	}
+
+	render(){
+		const movieLists = this.state.movieList;
+		const suggestedMovies = [];
+		let displaySuggestion;
+		movieLists.slice(0,7).forEach((movie) => {
+			suggestedMovies.push(
+				<li className="suggestedList">
+					<Link to={`/movie/${movie.id}`}>{movie.title} </Link>
+				</li>
+			);
+		});
+		return(
+			<div className="searchSeaction">
+				<form className="searchBox" 
+				id="form"
+				onBlur={this.onBlur}
+				onMouseDown={this.setIgnoreBlur} 
+				onMouseUp={this.clearIgnoreBlur} 
+				onMouseOut={this.clearIgnoreBlur} >
+					<input className="searchBar"
+					type="text"
+					placeholder="Search Movie.." 
+					//value={this.props.searchMovie} 
+					onChange={this.handleFilter} 
+					onFocus={this.onFocus}/>
+					<span className="suggestBox">
+						<ul>{this.state.showSuggestion && suggestedMovies}</ul>
+					</span>
+				</form>
+			</div>
+		);
+	}
+
     setIgnoreBlur() {
     	this.ignoreBlur = true;
  	}
@@ -49,13 +84,24 @@ export default class SearchBar extends React.Component{
 						apiKey + "&language=en-US&query=" + 
 						this.state.query + "&page=1&include_adult=false";
 		console.log(movieLink);
-		$.ajax({
+		/**$.ajax({
 			method: 'GET',
 			url: movieLink,
 			success: (movieList) => {
 				//create new movie link here
 				this.setState({movieList: movieList.results});
 			}
+		});**/
+		
+		axios({
+			method: 'GET',
+			url: movieLink
+		}).then( (movieList) => {
+			//create new movie link here
+			console.log(movieList);
+			this.setState({movieList: movieList.data.results});
+		}).catch(function(error){
+			console.log(error)
 		});
 	}
 
@@ -65,45 +111,10 @@ export default class SearchBar extends React.Component{
 		}, () => {
 		    if (this.state.query && this.state.query.length > 0) {
 		        return  this.fetchMovie();
-		    }else if(!this.state.query){
-		      	
+		    }else if(!this.state.query){ 	
 		    }
     	});
 	}
 
-	render(){
-		const movieLists = this.state.movieList;
-		const rows = [];
-		let displaySuggestion;
-		movieLists.slice(0,7).forEach((movie) => {
-			rows.push(
-				<li className="suggestedList">
-					<Link to={`/movie/${movie.id}`}>{movie.title} </Link>
-				</li>
-			);
-		});
-		return(
-			<div className="searchSeaction">
-				<form className="searchBox" 
-				id="form"
-				onBlur={this.onBlur}
-				onMouseDown={this.setIgnoreBlur} 
-				onMouseUp={this.clearIgnoreBlur} 
-				onMouseOut={this.clearIgnoreBlur} >
-					<input className="searchBar"
-					type="text"
-					placeholder="Search Movie.." 
-					//value={this.props.searchMovie} 
-					onChange={this.handleFilter} 
-					onFocus={this.onFocus}/>
-					<span 
-					className="suggestBox" 
-					style={displaySuggestion}>
-						<ul>{this.state.showSuggestion && rows}</ul>
-					</span>
-				</form>
-			</div>
-		);
-	}
 
 }
