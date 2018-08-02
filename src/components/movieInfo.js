@@ -100,9 +100,9 @@ class ShowInfo extends React.Component{
 				</ul>
 				<h3>Trailers</h3>
 				<ul className="trailers">
-					<div className="cfix">
+					
 						{movieTrailer}
-					</div>
+					
 				</ul>
 			</div>
 		</div>
