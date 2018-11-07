@@ -33,7 +33,7 @@ export default class SearchBar extends React.Component{
 		movieLists.slice(0,7).forEach((movie) => {
 			suggestedMovies.push(
 				<li className="suggestedList">
-					<Link to={`/movies/${movie.id}`}>{movie.title} </Link>
+					<Link to={`/movie/${movie.id}`}>{movie.title} </Link>
 				</li>
 			);
 		});
