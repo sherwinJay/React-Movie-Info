@@ -48,7 +48,7 @@ constructor(props){
 			return(
 			<li className="movieCategoryList">
 				
-				<Link to={`/movie/${movies.id}`} className="moviesBox" style={backgroundImage}><Movies 
+				<Link to={`/movies/${movies.id}`} className="moviesBox" style={backgroundImage}><Movies 
 					title={movies.title}
 					overview={movies.overview}
 					rating={movies.vote_average} />
